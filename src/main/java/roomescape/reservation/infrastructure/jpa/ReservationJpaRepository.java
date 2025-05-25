@@ -56,15 +56,15 @@ public class ReservationJpaRepository implements ReservationRepository {
     }
 
     @Override
-    public boolean hasReservedReservation(Reservation reservation) {
-        return jpaReservationRepository.existsByDateAndTimeIdAndThemeIdAndStatus(reservation.getDate(),
-                reservation.timeId(), reservation.themeId(), ReservationStatus.RESERVED);
+    public boolean hasReservedReservation(LocalDate date, Long timeId, Long themeId) {
+        return jpaReservationRepository.existsByDateAndTimeIdAndThemeIdAndStatus(date, timeId, themeId,
+                ReservationStatus.RESERVED);
     }
 
     @Override
-    public boolean hasSameReservation(Reservation reservation) {
-        return jpaReservationRepository.existsReservation(reservation.getDate(), reservation.timeId(),
-                reservation.themeId(), reservation.memberId(), reservation.getStatus());
+    public boolean hasSameReservation(LocalDate date, Long timeId, Long memberId, Long themeId,
+                                      ReservationStatus status) {
+        return jpaReservationRepository.existsReservation(date, timeId, themeId, memberId, status);
     }
 
     @Override

@@ -22,9 +22,9 @@ public interface ReservationRepository {
 
     boolean existsByTimeId(Long timeId);
 
-    boolean hasReservedReservation(Reservation reservation);
+    boolean hasReservedReservation(LocalDate date, Long timeId, Long themeId);
 
-    boolean hasSameReservation(Reservation reservation);
+    boolean hasSameReservation(LocalDate date, Long timeId, Long memberId, Long themeId, ReservationStatus status);
 
     boolean existsByThemeId(Long themeId);
 

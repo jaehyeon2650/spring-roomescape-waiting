@@ -39,24 +39,25 @@ public class FakeReservationRepository implements ReservationRepository {
     }
 
     @Override
-    public boolean hasReservedReservation(Reservation reservation) {
+    public boolean hasReservedReservation(LocalDate date, Long timeId, Long themeId) {
         return reservations.stream()
                 .anyMatch(nextReservation ->
-                        nextReservation.timeId().equals(reservation.timeId())
-                                && nextReservation.getDate().equals(reservation.getDate())
-                                && nextReservation.themeId().equals(reservation.themeId())
+                        nextReservation.timeId().equals(timeId)
+                                && nextReservation.getDate().equals(date)
+                                && nextReservation.themeId().equals(themeId)
                                 && nextReservation.getStatus().equals(ReservationStatus.RESERVED));
     }
 
     @Override
-    public boolean hasSameReservation(Reservation reservation) {
+    public boolean hasSameReservation(LocalDate date, Long timeId, Long memberId, Long themeId,
+                                      ReservationStatus status) {
         return reservations.stream()
                 .anyMatch(nextReservation ->
-                        nextReservation.memberId().equals(reservation.memberId())
-                                && nextReservation.getDate().equals(reservation.getDate())
-                                && nextReservation.themeId().equals(reservation.themeId())
-                                && nextReservation.timeId().equals(reservation.timeId())
-                                && nextReservation.getStatus().equals(reservation.getStatus()));
+                        nextReservation.memberId().equals(memberId)
+                                && nextReservation.getDate().equals(date)
+                                && nextReservation.themeId().equals(themeId)
+                                && nextReservation.timeId().equals(timeId)
+                                && nextReservation.getStatus().equals(status));
     }
 
     @Override
