@@ -198,11 +198,11 @@ function onWaitButtonClick() {
           return response.json();
         })
         .then(data => {
-          alert('Reservation waiting successful!');
+          alert('대기 신청을 완료하였습니다!');
           window.location.href = "/";
         })
         .catch(error => {
-          alert("An error occurred while making the reservation waiting.");
+          alert("이미 예약 혹은 대기가 존재합니다.");
           console.error(error);
         });
   } else {
