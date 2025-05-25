@@ -44,30 +44,20 @@ public class ReservationService {
     }
 
     public ReservationResponse createReservation(final ReservationRequest request, final Long memberId) {
-        Reservation reservation = makeReservation(request.timeId(), request.themeId(),
-                memberId, request.date(), ReservationStatus.RESERVED);
-
-        if (reservationRepository.hasReservedReservation(reservation)) {
+        if (reservationRepository.hasReservedReservation(request.date(), request.timeId(), request.themeId())) {
             throw new IllegalArgumentException("이미 예약이 존재합니다.");
         }
-
+        Reservation reservation = makeReservation(request.timeId(), request.themeId(),
+                memberId, request.date(), ReservationStatus.RESERVED);
         Reservation save = reservationRepository.save(reservation);
         return ReservationResponse.from(save);
     }
 
     public ReservationResponse createWaitingReservation(final ReservationWaitingRequest waitingRequest,
                                                         final Long memberId) {
+        validateCanMakeWaitingReservation(waitingRequest, memberId);
         Reservation reservation = makeReservation(waitingRequest.time(), waitingRequest.theme(),
                 memberId, waitingRequest.date(), ReservationStatus.WAITED);
-
-        if (!reservationRepository.hasReservedReservation(reservation)) {
-            throw new IllegalArgumentException("예약 가능한 상태에서는 대기할 수 없습니다.");
-        }
-
-        if (reservationRepository.hasSameReservation(reservation)) {
-            throw new IllegalArgumentException("이미 예약 대기를 신청했습니다");
-        }
-
         Reservation save = reservationRepository.save(reservation);
         return ReservationResponse.from(save);
     }
@@ -102,7 +92,8 @@ public class ReservationService {
         Reservation reservation = reservationRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 예약대기입니다."));
 
-        if (reservationRepository.hasReservedReservation(reservation)) {
+        if (reservationRepository.hasReservedReservation(reservation.getDate(), reservation.timeId(),
+                reservation.themeId())) {
             throw new IllegalArgumentException("기존 확정 예약이 취소 되지 않았습니다.");
         }
 
@@ -127,5 +118,20 @@ public class ReservationService {
 
         return Reservation.createWithoutId(dateTime.now(), member, date, time,
                 theme, status);
+    }
+
+    private void validateCanMakeWaitingReservation(ReservationWaitingRequest waitingRequest, Long memberId) {
+        if (!reservationRepository.hasReservedReservation(waitingRequest.date(), waitingRequest.time(),
+                waitingRequest.theme())) {
+            throw new IllegalArgumentException("예약 가능한 상태에서는 대기할 수 없습니다.");
+        }
+        if (reservationRepository.hasSameReservation(waitingRequest.date(), waitingRequest.time(), memberId,
+                waitingRequest.theme(), ReservationStatus.RESERVED)) {
+            throw new IllegalArgumentException("이미 예약을 완료하였습니다.");
+        }
+        if (reservationRepository.hasSameReservation(waitingRequest.date(), waitingRequest.time(), memberId,
+                waitingRequest.theme(), ReservationStatus.WAITED)) {
+            throw new IllegalArgumentException("이미 예약 대기를 신청했습니다.");
+        }
     }
 }

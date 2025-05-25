@@ -193,7 +193,16 @@ class ReservationServiceTest {
         assertThatThrownBy(() -> reservationService.createWaitingReservation(
                 new ReservationWaitingRequest(LocalDate.of(2025, 5, 22), 1L, 2L), 1L))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("이미 예약 대기를 신청했습니다");
+                .hasMessage("이미 예약 대기를 신청했습니다.");
+    }
+
+    @Test
+    @DisplayName("이미 예약 완료되었는데 예약 대기를 하려고 하면 예외가 발생한다.")
+    void createWaitingReservation_whenAlreadyReserved() {
+        assertThatThrownBy(() -> reservationService.createWaitingReservation(
+                new ReservationWaitingRequest(LocalDate.of(2024, 10, 6), 1L, 1L), 1L))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이미 예약을 완료하였습니다.");
     }
 
     @Test
