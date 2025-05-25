@@ -2,6 +2,7 @@ package roomescape.reservation.service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -51,7 +52,7 @@ public class FakeReservationRepository implements ReservationRepository {
     public boolean hasSameReservation(Reservation reservation) {
         return reservations.stream()
                 .anyMatch(nextReservation ->
-                        nextReservation.timeId().equals(reservation.timeId())
+                        nextReservation.memberId().equals(reservation.memberId())
                                 && nextReservation.getDate().equals(reservation.getDate())
                                 && nextReservation.themeId().equals(reservation.themeId())
                                 && nextReservation.timeId().equals(reservation.timeId())
@@ -148,7 +149,7 @@ public class FakeReservationRepository implements ReservationRepository {
 
     @Override
     public List<Reservation> findAll() {
-        return reservations;
+        return Collections.unmodifiableList(reservations);
     }
 
     private boolean matchMemberId(Reservation reservation, Long memberId) {
