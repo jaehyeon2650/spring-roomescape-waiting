@@ -82,7 +82,6 @@ public class ReservationService {
                 .toList();
     }
 
-    @Transactional
     public void deleteReservationById(final Long id) {
         reservationRepository.deleteById(id);
     }
