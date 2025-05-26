@@ -87,6 +87,10 @@ public class Reservation {
         }
     }
 
+    public void changeToReserve() {
+        this.status = ReservationStatus.RESERVED;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }

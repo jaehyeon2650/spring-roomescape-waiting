@@ -32,6 +32,4 @@ public interface ReservationRepository {
     List<ReservationWithRank> findReservationWithRankByMemberId(Long memberId);
 
     Optional<Reservation> findById(Long id);
-
-    void changeReservationStatus(Long id, ReservationStatus status);
 }

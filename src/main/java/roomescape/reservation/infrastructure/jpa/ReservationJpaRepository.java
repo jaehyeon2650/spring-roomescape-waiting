@@ -81,9 +81,4 @@ public class ReservationJpaRepository implements ReservationRepository {
     public Optional<Reservation> findById(Long id) {
         return jpaReservationRepository.findById(id);
     }
-
-    @Override
-    public void changeReservationStatus(Long id, ReservationStatus status) {
-        jpaReservationRepository.changeReservationStatus(id, status);
-    }
 }

@@ -95,8 +95,7 @@ public class ReservationService {
                 reservation.themeId())) {
             throw new IllegalArgumentException("기존 확정 예약이 취소 되지 않았습니다.");
         }
-
-        reservationRepository.changeReservationStatus(id, ReservationStatus.RESERVED);
+        reservation.changeToReserve();
     }
 
     public List<MyReservationResponse> getMyReservations(final Long id) {
