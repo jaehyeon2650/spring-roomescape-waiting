@@ -24,12 +24,12 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    public MemberController(MemberService memberService) {
+    public MemberController(final MemberService memberService) {
         this.memberService = memberService;
     }
 
     @PostMapping
-    public ResponseEntity<SignupResponse> signup(@RequestBody SignupRequest request) {
+    public ResponseEntity<SignupResponse> signup(@RequestBody final SignupRequest request) {
         SignupResponse response = memberService.createUser(request);
         URI uri = URI.create(RESERVATION_BASE_URL + SLASH + response.id());
         return ResponseEntity.created(uri).body(response);

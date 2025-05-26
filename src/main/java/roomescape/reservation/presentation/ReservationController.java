@@ -37,7 +37,7 @@ public class ReservationController {
 
     @GetMapping(RESERVATION_BASE_URL)
     public ResponseEntity<List<ReservationResponse>> getReservations(
-            @ModelAttribute ReservationConditionRequest request) {
+            @ModelAttribute final ReservationConditionRequest request) {
         List<ReservationResponse> response = reservationService.getAllReservations(request);
         return ResponseEntity.ok(response);
     }
@@ -66,7 +66,7 @@ public class ReservationController {
     }
 
     @GetMapping(RESERVATION_BASE_URL + "/mine")
-    public ResponseEntity<List<MyReservationResponse>> getMyReservations(@Authentication LoginMember loginMember) {
+    public ResponseEntity<List<MyReservationResponse>> getMyReservations(@Authentication final LoginMember loginMember) {
         List<MyReservationResponse> myReservationResponses = reservationService.getMyReservations(loginMember.id());
         return ResponseEntity.ok().body(myReservationResponses);
     }
