@@ -20,7 +20,7 @@ import roomescape.reservation.service.FakeReservationRepository;
 import roomescape.reservation.service.FakeThemeRepository;
 import roomescape.theme.domain.Theme;
 import roomescape.theme.domain.ThemeRepository;
-import roomescape.theme.dto.response.PopularThemeResponse;
+import roomescape.theme.presentation.dto.response.PopularThemeResponse;
 
 class ThemeServiceTest {
 

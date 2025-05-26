@@ -21,7 +21,7 @@ import org.springframework.test.context.jdbc.Sql;
 import roomescape.member.domain.Member;
 import roomescape.reservation.domain.Reservation;
 import roomescape.reservation.domain.ReservationStatus;
-import roomescape.reservation.domain.ReservationWithRank;
+import roomescape.reservation.infrastructure.dto.ReservationWithRank;
 import roomescape.reservation.infrastructure.jpa.JpaReservationRepository;
 import roomescape.reservationTime.domain.ReservationTime;
 import roomescape.theme.domain.Theme;

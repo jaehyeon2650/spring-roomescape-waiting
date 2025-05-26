@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import roomescape.reservation.domain.Reservation;
 import roomescape.reservation.domain.ReservationRepository;
 import roomescape.reservation.domain.ReservationStatus;
-import roomescape.reservation.domain.ReservationWithRank;
+import roomescape.reservation.infrastructure.dto.ReservationWithRank;
 
 public class FakeReservationRepository implements ReservationRepository {
 

@@ -20,24 +20,24 @@ import roomescape.common.util.DateTime;
 import roomescape.member.domain.Member;
 import roomescape.member.domain.MemberRepository;
 import roomescape.member.domain.Role;
-import roomescape.member.dto.response.ReservationMemberResponse;
+import roomescape.member.presentation.dto.response.ReservationMemberResponse;
 import roomescape.member.service.FakeMemberRepository;
 import roomescape.reservation.domain.Reservation;
 import roomescape.reservation.domain.ReservationRepository;
 import roomescape.reservation.domain.ReservationStatus;
-import roomescape.reservation.domain.ReservationWithRank;
-import roomescape.reservation.dto.request.ReservationConditionRequest;
-import roomescape.reservation.dto.request.ReservationRequest;
-import roomescape.reservation.dto.request.ReservationWaitingRequest;
-import roomescape.reservation.dto.response.MyReservationResponse;
-import roomescape.reservation.dto.response.ReservationResponse;
-import roomescape.reservation.dto.response.WaitingReservationResponse;
+import roomescape.reservation.infrastructure.dto.ReservationWithRank;
+import roomescape.reservation.presentation.dto.request.ReservationConditionRequest;
+import roomescape.reservation.presentation.dto.request.ReservationRequest;
+import roomescape.reservation.presentation.dto.request.ReservationWaitingRequest;
+import roomescape.reservation.presentation.dto.response.MyReservationResponse;
+import roomescape.reservation.presentation.dto.response.ReservationResponse;
+import roomescape.reservation.presentation.dto.response.WaitingReservationResponse;
 import roomescape.reservationTime.domain.ReservationTime;
 import roomescape.reservationTime.domain.ReservationTimeRepository;
-import roomescape.reservationTime.dto.response.ReservationTimeResponse;
+import roomescape.reservationTime.presentation.dto.response.ReservationTimeResponse;
 import roomescape.theme.domain.Theme;
 import roomescape.theme.domain.ThemeRepository;
-import roomescape.theme.dto.response.ThemeResponse;
+import roomescape.theme.presentation.dto.response.ThemeResponse;
 
 class ReservationServiceTest {
 

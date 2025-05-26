@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import roomescape.reservation.domain.Reservation;
 import roomescape.reservation.domain.ReservationRepository;
 import roomescape.reservation.domain.ReservationStatus;
-import roomescape.reservation.domain.ReservationWithRank;
+import roomescape.reservation.infrastructure.dto.ReservationWithRank;
 
 @Repository
 public class ReservationJpaRepository implements ReservationRepository {

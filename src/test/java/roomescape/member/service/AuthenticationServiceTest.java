@@ -15,8 +15,8 @@ import roomescape.common.util.SystemDateTime;
 import roomescape.member.domain.Member;
 import roomescape.member.domain.MemberRepository;
 import roomescape.member.domain.Role;
-import roomescape.member.dto.request.LoginMember;
-import roomescape.member.dto.request.LoginRequest;
+import roomescape.member.presentation.dto.request.LoginMember;
+import roomescape.member.presentation.dto.request.LoginRequest;
 
 class AuthenticationServiceTest {
 

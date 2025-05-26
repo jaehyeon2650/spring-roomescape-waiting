@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import roomescape.common.exceptionHandler.dto.ExceptionResponse;
 import roomescape.member.argumentResolver.Authentication;
-import roomescape.member.dto.request.LoginMember;
-import roomescape.reservation.dto.request.ReservationConditionRequest;
-import roomescape.reservation.dto.request.ReservationRequest;
-import roomescape.reservation.dto.request.ReservationWaitingRequest;
-import roomescape.reservation.dto.response.MyReservationResponse;
-import roomescape.reservation.dto.response.ReservationResponse;
+import roomescape.member.presentation.dto.request.LoginMember;
+import roomescape.reservation.presentation.dto.request.ReservationConditionRequest;
+import roomescape.reservation.presentation.dto.request.ReservationRequest;
+import roomescape.reservation.presentation.dto.request.ReservationWaitingRequest;
+import roomescape.reservation.presentation.dto.response.MyReservationResponse;
+import roomescape.reservation.presentation.dto.response.ReservationResponse;
 import roomescape.reservation.service.ReservationService;
 
 @RestController

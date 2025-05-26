@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import roomescape.member.argumentResolver.Authentication;
 import roomescape.common.util.TokenCookieManager;
-import roomescape.member.dto.request.LoginMember;
-import roomescape.member.dto.request.LoginRequest;
-import roomescape.member.dto.response.LoginCheckResponse;
+import roomescape.member.presentation.dto.request.LoginMember;
+import roomescape.member.presentation.dto.request.LoginRequest;
+import roomescape.member.presentation.dto.response.LoginCheckResponse;
 import roomescape.member.service.LoginService;
 
 @RestController
