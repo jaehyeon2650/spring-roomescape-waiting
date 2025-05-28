@@ -2,6 +2,7 @@ package roomescape.reservation.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import roomescape.common.util.DateTime;
@@ -83,6 +84,10 @@ public class ReservationService {
     }
 
     public void deleteReservationById(final Long id) {
+        Optional<Reservation> reservation = reservationRepository.findById(id);
+        if (reservation.isEmpty()) {
+            throw new IllegalArgumentException("기존 예약이 존재하지 않습니다.");
+        }
         reservationRepository.deleteById(id);
     }
 

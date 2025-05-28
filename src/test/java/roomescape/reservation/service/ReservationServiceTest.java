@@ -284,4 +284,12 @@ class ReservationServiceTest {
         assertThat(findReservation).isPresent();
         assertThat(findReservation.get().getStatus()).isEqualTo(ReservationStatus.RESERVED);
     }
+
+    @Test
+    @DisplayName("유효하지 않은 아이디로 삭제를 시도하는 경우 예외가 발생한다.")
+    void deleteById_exception(){
+        assertThatThrownBy(()->reservationService.deleteReservationById(999L))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("기존 예약이 존재하지 않습니다.");
+    }
 }
